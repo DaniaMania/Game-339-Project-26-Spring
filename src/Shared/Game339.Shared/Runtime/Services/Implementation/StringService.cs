@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Game339.Shared.Diagnostics;
 
@@ -21,6 +22,7 @@ namespace Game339.Shared.Services.Implementation
         
         public string ReverseWords(string input)
         {
+            if (input == null) throw new ArgumentNullException(nameof(input));
             var words = input.Split(' ');
             System.Array.Reverse(words);
             var output = string.Join(' ', words);
