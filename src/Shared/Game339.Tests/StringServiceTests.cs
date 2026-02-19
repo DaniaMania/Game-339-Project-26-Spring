@@ -25,11 +25,27 @@ public class StringServiceTests
         // Assert
         Assert.That(result, Is.EqualTo(expected));
     }
+    
+    [TestCase("hello world", "world hello")]
+    [TestCase("one two three", "three two one")]
+    [TestCase("a", "a")]
+    [TestCase("", "")]
+    public void ReverseWords_ReturnsExpectedString(string input, string expected)
+    {
+        var result = _svc.ReverseWords(input);
+        Assert.That(result, Is.EqualTo(expected));
+    }
 
     [Test]
     public void Reverse_NullString_ThrowsArgumentNullException()
     {
         // Act & Assert
         Assert.Throws<System.ArgumentNullException>(() => _svc.Reverse(null));
+    }
+    
+    [Test]
+    public void ReverseWords_NullString_ThrowsArgumentNullException()
+    {
+        Assert.Throws<System.ArgumentNullException>(() => _svc.ReverseWords(null));
     }
 }
